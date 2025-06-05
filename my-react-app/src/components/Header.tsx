@@ -1,27 +1,37 @@
-import * as React from "react";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <header className="header">
-      <h1 className="header-logo">
-        AROMA
-      </h1>
-      <nav className="header-nav">
+      <Link to="/" className="header-logo">AROMA</Link>
+      <button 
+        onClick={toggleMenu}
+        className={isMenuOpen ? 'header-close-button' : 'header-hamburger-button'}
+      >
+        {isMenuOpen ? 'X' : '☰'}
+      </button>
+      <nav className={`header-nav ${isMenuOpen ? 'active' : ''}`}>
         <ul className="header-nav-main">
-          <li>홈</li>
-          <li>제품</li>
-          <li>향수</li>
-          <li>디퓨저</li>
-          <li>브랜드</li>
-          <li>고객센터</li>
-        </ul>
-        <ul className="header-nav-user">
-          <li>로그인</li>
-          <li>장바구니</li>
-          <li>마이페이지</li>
+          <li><Link to="/">홈</Link></li>
+          <li><Link to="/products">제품</Link></li>
+          <li><Link to="/perfume">향수</Link></li>
+          <li><Link to="/diffuser">디퓨저</Link></li>
+          <li><Link to="/brand">브랜드</Link></li>
+          <li><Link to="/service">고객센터</Link></li>
+          <li><Link to="/login">로그인</Link></li>
+          <li><Link to="/cart">장바구니</Link></li>
+          <li><Link to="/mypage">마이페이지</Link></li>
         </ul>
       </nav>
-      <button className="header-menu-button">☰</button>
     </header>
   );
 }
+
+export default Header;

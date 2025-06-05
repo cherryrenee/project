@@ -1,15 +1,10 @@
 import React from 'react';
+import { HeroSection } from './HeroSection';
 
 const MainContent: React.FC = () => {
   return (
     <>
-      <section className="hero-section">
-        <div className="hero-content">
-          <h2 className="hero-title">향기로운 당신의 일상</h2>
-          <p className="hero-description">AROMA와 함께하는 특별한 순간</p>
-          <button className="hero-button">자세히 보기</button>
-        </div>
-      </section>
+    <HeroSection />
       <section className="product-section">
         <h2 className="product-section-title">베스트 상품</h2>
         <div className="product-grid">
@@ -37,7 +32,7 @@ const MainContent: React.FC = () => {
               <p className="product-price">159,000원</p>
             </div>
           </div>
-          <div className="product-card hidden-md">
+          <div className="product-card">
             <div className="product-image"></div>
             <div className="product-info">
               <h3 className="product-title">시그니처 향수</h3>
