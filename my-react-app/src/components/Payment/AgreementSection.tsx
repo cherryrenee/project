@@ -17,7 +17,7 @@ export function AgreementSection() {
 
   return (
     <section className="agreement-section">
-      <fieldset>
+      <fieldset className="agreement-fieldset">
         <legend className="sr-only">주문 동의 사항</legend>
 
         <div className="agreement-item">

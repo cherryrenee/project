@@ -24,11 +24,9 @@ export function Header() {
       <nav className={`header-nav ${isMenuOpen ? 'active' : ''}`}>
         <ul className="header-nav-main">
           <li><Link to="/" onClick={handleLinkClick}>홈</Link></li>
-          <li><Link to="/products" onClick={handleLinkClick}>제품</Link></li>
-          <li><Link to="/perfume" onClick={handleLinkClick}>향수</Link></li>
-          <li><Link to="/diffuser" onClick={handleLinkClick}>디퓨저</Link></li>
-          <li><Link to="/brand" onClick={handleLinkClick}>브랜드</Link></li>
-          <li><Link to="/service" onClick={handleLinkClick}>고객센터</Link></li>
+          <li><Link to="/products" onClick={handleLinkClick}>상품</Link></li>
+          <li><Link to="/perfumes" onClick={handleLinkClick}>향수</Link></li>
+          <li><Link to="/diffusers" onClick={handleLinkClick}>디퓨저</Link></li>
           <li><Link to="/login" onClick={handleLinkClick}>로그인</Link></li>
           <li><Link to="/cart" onClick={handleLinkClick}>장바구니</Link></li>
           <li><Link to="/mypage" onClick={handleLinkClick}>마이페이지</Link></li>

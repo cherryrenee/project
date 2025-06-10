@@ -6,6 +6,9 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import { Cart } from './pages/Cart';
 import PaymentPage from './pages/PaymentPage';
+import Products from './pages/Products';
+import Perfumes from './pages/Perfumes';
+import Diffusers from './pages/Diffusers';
 
 const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const location = useLocation();
@@ -29,6 +32,9 @@ const App: React.FC = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/payment" element={<PaymentPage />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/perfumes" element={<Perfumes />} />
+          <Route path="/diffusers" element={<Diffusers />} />
         </Routes>
       </AppLayout>
     </Router>

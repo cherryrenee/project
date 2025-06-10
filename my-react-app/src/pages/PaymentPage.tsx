@@ -1,6 +1,6 @@
 "use client";
 import * as React from "react";
-import "./Payment.css";
+import "../components/Payment/Payment.css";
 import { PaymentSummary } from "../components/Payment/PaymentSummary";
 import { ShippingForm } from "../components/Payment/ShippingForm";
 import { PaymentMethods } from "../components/Payment/PaymentMethods";

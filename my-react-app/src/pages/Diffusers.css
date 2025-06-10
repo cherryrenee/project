@@ -1,0 +1,63 @@
+.products-page {
+  padding: 2rem 0 3rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 5rem auto;
+}
+
+h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #27272a;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+  margin-top: 4rem;
+}
+
+.product-grid-item {
+  width: 100%;
+  min-width: 250px;
+  cursor: pointer;
+}
+
+/* 디퓨저와 캔들 구분선 */
+.products-grid::after {
+  content: '캔들';
+  grid-column: 1 / -1;
+  text-align: center;
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .products-page {
+    margin: 0 auto;
+    width: auto;
+  }
+  
+  .products-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  
+  .products-grid::after {
+    display: none;
+  }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  .products-page {
+    margin: 0 auto;
+    width: auto;
+  }
+  
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

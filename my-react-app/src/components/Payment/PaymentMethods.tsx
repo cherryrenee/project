@@ -33,10 +33,8 @@ export function PaymentMethods() {
               />
               <label>실시간 계좌이체</label>
             </div>
-          </fieldset>
-        </div>
-
-        <div className="payment-option-single">
+          
+        <div className="payment-option">
           <RadioButton
             name="paymentMethod"
             value="kakaopay"
@@ -44,6 +42,8 @@ export function PaymentMethods() {
             onChange={() => setSelectedMethod("kakaopay")}
           />
           <label>카카오페이</label>
+        </div>
+        </fieldset>
         </div>
       </div>
 
