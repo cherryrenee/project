@@ -1,5 +1,5 @@
 import React from 'react';
-import MainContent from '../components/MainContent';
+import MainContent from '../components/Home/MainContent';
 
 const Home: React.FC = () => {
   return (

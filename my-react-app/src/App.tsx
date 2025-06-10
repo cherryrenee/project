@@ -4,6 +4,8 @@ import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import Home from './pages/Home';
 import Login from './pages/Login';
+import { Cart } from './pages/Cart';
+import PaymentPage from './pages/PaymentPage';
 
 const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const location = useLocation();
@@ -25,6 +27,8 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/payment" element={<PaymentPage />} />
         </Routes>
       </AppLayout>
     </Router>

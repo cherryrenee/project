@@ -1,8 +1,8 @@
 import * as React from "react";
-import { Header } from "./Header";
+import { Header } from "../Header";
 import { HeroSection } from "./HeroSection";
 import { ProductGrid } from "./ProductGrid";
-import { Footer } from "./Footer";
+import { Footer } from "../Footer";
 
 function AromaLandingPage() {
   return (

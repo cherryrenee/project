@@ -1,7 +1,7 @@
 "use client";
 import * as React from "react";
-import LoginHeader from "../components/LoginHeader";
-import LoginForm from "../components/LoginForm";
+import LoginHeader from "../components/Login/LoginHeader";
+import LoginForm from "../components/Login/LoginForm";
 import {Footer} from "../components/Footer";
 
 function Login() {
