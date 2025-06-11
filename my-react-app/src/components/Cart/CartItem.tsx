@@ -1,66 +1,42 @@
 "use client";
-import * as React from "react";
-import { QuantityControl } from "./QuantityControl";
+import React from 'react';
+import { QuantityControl } from './QuantityControl';
+import "../../pages/Cart.css";
 
 interface CartItemProps {
-  id: string;
-  name: string;
-  description: string;
+  id: number;
+  title: string;
   price: string;
   quantity: number;
-  onQuantityChange?: (id: string, newQuantity: number) => void;
-  onRemove?: (id: string) => void;
+  image_url: string;
+  onQuantityChange: (id: number, newQuantity: number) => void;
+  onRemove: (id: number) => void;
 }
 
-export const CartItem: React.FC<CartItemProps> = ({
-  id,
-  name,
-  description,
-  price,
-  quantity,
-  onQuantityChange,
-  onRemove
-}) => {
-  const handleQuantityChange = (newQuantity: number) => {
-    if (onQuantityChange) {
-      onQuantityChange(id, newQuantity);
-    }
-  };
-
-  const handleRemove = () => {
-    if (onRemove) {
-      onRemove(id);
-    }
-  };
-
+export function CartItem({ id, title, price, quantity, image_url, onQuantityChange, onRemove }: CartItemProps) {
   return (
     <article className="cart-item">
       <div className="cart-item-info">
-        <div className="cart-item-image" />
+        <div className="cart-item-image-container">
+          <img src={image_url} alt={title} className="cart-item-image" />
+        </div>
         <div className="cart-item-details">
-          <h3 className="cart-item-name">
-            {name}
-          </h3>
-          <p className="cart-item-description">
-            {description}
-          </p>
-          <div className="cart-item-price">
-            {price}
+          <h3 className="cart-item-title">{title}</h3>
+          <p className="cart-item-price">{price}</p>
+          <div className="cart-item-controls">
+            <QuantityControl
+              quantity={quantity}
+              onQuantityChange={(newQuantity) => onQuantityChange(id, newQuantity)}
+            />
+            <button 
+              className="cart-item-remove"
+              onClick={() => onRemove(id)}
+            >
+              삭제
+            </button>
           </div>
         </div>
       </div>
-      <div className="cart-item-controls">
-        <QuantityControl
-          quantity={quantity}
-          onQuantityChange={handleQuantityChange}
-        />
-        <button
-          onClick={handleRemove}
-          className="cart-item-remove"
-        >
-          삭제
-        </button>
-      </div>
     </article>
   );
-};
+}

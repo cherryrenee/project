@@ -1,50 +1,101 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { HeroSection } from './HeroSection';
+import { ProductCard } from "./ProductCard";
+import { CartModal } from "../Cart/CartModal";
+import { useCart } from "../../context/CartContext";
+import supabase from "../../supabaseClient";
 import './Home.css';
 
-const MainContent: React.FC = () => {
+interface Product {
+  id: number;
+  title: string;
+  description: string;
+  price: string;
+  image_url: string;
+  category: string;
+}
+
+export function MainContent() {
+  const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { addItem } = useCart();
+
+  useEffect(() => {
+    const fetchFeaturedProducts = async () => {
+      // 향수 1개와 디퓨저 2개를 가져옵니다
+      const { data: perfumeData, error: perfumeError } = await supabase
+        .from('products')
+        .select('*')
+        .eq('category', 'perfume')
+        .limit(1);
+
+      const { data: diffuserData, error: diffuserError } = await supabase
+        .from('products')
+        .select('*')
+        .eq('category', 'diffuser')
+        .limit(2);
+
+      if (perfumeError) {
+        console.error('Error fetching perfume:', perfumeError);
+      }
+      if (diffuserError) {
+        console.error('Error fetching diffusers:', diffuserError);
+      }
+
+      const combinedProducts = [
+        ...(perfumeData || []),
+        ...(diffuserData || [])
+      ];
+
+      setFeaturedProducts(combinedProducts);
+    };
+
+    fetchFeaturedProducts();
+  }, []);
+
+  const handleProductClick = (product: Product) => {
+    setSelectedProduct(product);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedProduct(null);
+  };
+
   return (
     <>
     <HeroSection />
-      <section className="product-section">
-        <h2 className="product-section-title">베스트 상품</h2>
-        <div className="product-grid">
-          <div className="product-card">
-            <div className="product-image"></div>
-            <div className="product-info">
-              <h3 className="product-title">천연 향수</h3>
-              <p className="product-description">100% 자연에서 온 향기</p>
-              <p className="product-price">89,000원</p>
-            </div>
-          </div>
-          <div className="product-card">
-            <div className="product-image"></div>
-            <div className="product-info">
-              <h3 className="product-title">수제작 향수</h3>
-              <p className="product-description">장인의 손길로 만드는 향수</p>
-              <p className="product-price">129,000원</p>
-            </div>
-          </div>
-          <div className="product-card">
-            <div className="product-image"></div>
-            <div className="product-info">
-              <h3 className="product-title">맞춤 향수</h3>
-              <p className="product-description">당신만을 위한 특별한 향기</p>
-              <p className="product-price">159,000원</p>
-            </div>
-          </div>
-          <div className="product-card">
-            <div className="product-image"></div>
-            <div className="product-info">
-              <h3 className="product-title">시그니처 향수</h3>
-              <p className="product-description">AROMA의 시그니처 향기</p>
-              <p className="product-price">199,000원</p>
-            </div>
-          </div>
+    <main className="main-content">
+      <section className="featured-section">
+        <h2 className="section-title">추천 상품</h2>
+        <div className="featured-grid">
+          {featuredProducts.map((product) => (
+            <ProductCard
+              key={product.id}
+              id={product.id}
+              title={product.title}
+              description={product.description}
+              price={product.price}
+              imageUrl={product.image_url}
+              className="featured-product"
+              onClick={() => handleProductClick(product)}
+            />
+          ))}
         </div>
       </section>
+      {selectedProduct && (
+        <CartModal
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          product={selectedProduct}
+          onAddToCart={addItem}
+        />
+      )}
+    </main>
     </>
   );
-};
+}
 
 export default MainContent; 

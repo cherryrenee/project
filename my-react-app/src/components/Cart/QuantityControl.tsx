@@ -1,5 +1,6 @@
 "use client";
-import * as React from "react";
+import React from 'react';
+import "../../pages/Cart.css";
 
 interface QuantityControlProps {
   quantity: number;

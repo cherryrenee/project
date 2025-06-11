@@ -1,20 +1,16 @@
 import React from "react";
 
 interface ProductCardProps {
-  id: number;
   title: string;
   description: string;
   price: string;
-  imageUrl: string;
   className?: string;
-  category?: string;
-  onClick?: () => void;
 }
 
-export function ProductCard({ id, title, description, price, imageUrl, className = "", category, onClick }: ProductCardProps) {
+export function ProductCard({ title, description, price, className = "" }: ProductCardProps) {
   return (
-    <article className={`product-card ${className}`} onClick={onClick}>
-      <div className="product-image" style={{ backgroundImage: `url(${imageUrl})` }} />
+    <article className={`product-card ${className}`}>
+      <div className="product-image" />
       <div className="product-info">
         <h3 className="product-title">
           {title}

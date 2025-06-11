@@ -1,39 +1,77 @@
+import React, { useState, useEffect } from 'react';
 import { ProductCard } from "../components/Home/ProductCard";
+import { CartModal } from "../components/Cart/CartModal";
+import { useCart } from "../context/CartContext";
+import supabase from "../supabaseClient";
 import "./Perfumes.css";
 
-const perfumes = [
-  {
-    title: "피치 블로섬 향수",
-    description: "피치와 꽃잎의 달콤한 향기로 매력적인 향수",
-    price: "45,000원"
-  },
-  {
-    title: "그린 티 향수",
-    description: "자연 그대로의 녹차 향기로 우아한 향수",
-    price: "40,000원"
-  },
-  {
-    title: "바닐라 릴랙스 향수",
-    description: "바닐라의 달콤하고 편안한 향기로 매력적인 향수",
-    price: "43,000원"
-  }
-];
+interface Product {
+  id: number;
+  title: string;
+  description: string;
+  price: string;
+  image_url: string;
+  category: string;
+}
 
 export default function Perfumes() {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { addItem } = useCart();
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const { data, error } = await supabase
+        .from('products')
+        .select('*')
+        .eq('category', 'perfume');
+      
+      if (error) {
+        console.error('Error fetching perfumes:', error);
+      } else {
+        setProducts(data || []);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+  const handleProductClick = (product: Product) => {
+    setSelectedProduct(product);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedProduct(null);
+  };
+
   return (
-    <main className="products-page">
+    <main className="perfumes-page">
       <h1>향수 상품</h1>
-      <div className="products-grid">
-        {perfumes.map((product, index) => (
+      <div className="perfumes-grid">
+        {products.map((product) => (
           <ProductCard
-            key={index}
+            key={product.id}
+            id={product.id}
             title={product.title}
             description={product.description}
             price={product.price}
-            className="product-grid-item"
+            imageUrl={product.image_url}
+            className="perfumes-grid-item"
+            onClick={() => handleProductClick(product)}
           />
         ))}
       </div>
+      {selectedProduct && (
+        <CartModal
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          product={selectedProduct}
+          onAddToCart={addItem}
+        />
+      )}
     </main>
   );
 }
