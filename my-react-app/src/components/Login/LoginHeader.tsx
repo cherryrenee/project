@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 function LoginHeader() {
   return (
     <header className="login-header">
-      <h1>AROMA</h1>
+      <h1 className='header-logo'>AROMA</h1>
       <Link to="/">
         <button>← 홈으로 돌아가기</button>
       </Link>
