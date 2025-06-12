@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { HeroSection } from './HeroSection';
+import React, { useState, useEffect } from "react";
+import { HeroSection } from "./HeroSection";
 import { ProductCard } from "./ProductCard";
 import { CartModal } from "../Cart/CartModal";
 import { useCart } from "../../context/CartContext";
 import supabase from "../../supabaseClient";
-import './Home.css';
+import "./Home.css";
 
 interface Product {
   id: number;
@@ -25,27 +25,27 @@ export function MainContent() {
     const fetchFeaturedProducts = async () => {
       // 향수 1개와 디퓨저 2개를 가져옵니다
       const { data: perfumeData, error: perfumeError } = await supabase
-        .from('products')
-        .select('*')
-        .eq('category', 'perfume')
+        .from("products")
+        .select("*")
+        .eq("category", "perfume")
         .limit(1);
 
       const { data: diffuserData, error: diffuserError } = await supabase
-        .from('products')
-        .select('*')
-        .eq('category', 'diffuser')
+        .from("products")
+        .select("*")
+        .eq("category", "diffuser")
         .limit(2);
 
       if (perfumeError) {
-        console.error('Error fetching perfume:', perfumeError);
+        console.error("Error fetching perfume:", perfumeError);
       }
       if (diffuserError) {
-        console.error('Error fetching diffusers:', diffuserError);
+        console.error("Error fetching diffusers:", diffuserError);
       }
 
       const combinedProducts = [
         ...(perfumeData || []),
-        ...(diffuserData || [])
+        ...(diffuserData || []),
       ];
 
       setFeaturedProducts(combinedProducts);
@@ -66,36 +66,36 @@ export function MainContent() {
 
   return (
     <>
-    <HeroSection />
-    <main className="main-content">
-      <section className="featured-section">
-        <h2 className="section-title">추천 상품</h2>
-        <div className="featured-grid">
-          {featuredProducts.map((product) => (
-            <ProductCard
-              key={product.id}
-              id={product.id}
-              title={product.title}
-              description={product.description}
-              price={product.price}
-              imageUrl={product.image_url}
-              className="featured-product"
-              onClick={() => handleProductClick(product)}
-            />
-          ))}
-        </div>
-      </section>
-      {selectedProduct && (
-        <CartModal
-          isOpen={isModalOpen}
-          onClose={handleCloseModal}
-          product={selectedProduct}
-          onAddToCart={addItem}
-        />
-      )}
-    </main>
+      <HeroSection />
+      <main className="main-content">
+        <section className="featured-section">
+          <h2 className="product-section-title">추천 상품</h2>
+          <div className="featured-grid">
+            {featuredProducts.map((product) => (
+              <ProductCard
+                key={product.id}
+                id={product.id}
+                title={product.title}
+                description={product.description}
+                price={product.price}
+                imageUrl={product.image_url}
+                className="featured-product"
+                onClick={() => handleProductClick(product)}
+              />
+            ))}
+          </div>
+        </section>
+        {selectedProduct && (
+          <CartModal
+            isOpen={isModalOpen}
+            onClose={handleCloseModal}
+            product={selectedProduct}
+            onAddToCart={addItem}
+          />
+        )}
+      </main>
     </>
   );
 }
 
-export default MainContent; 
+export default MainContent;

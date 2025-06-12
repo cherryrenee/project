@@ -1,21 +1,22 @@
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { useCart } from '../../context/CartContext';
-import { useOrder } from '../../context/OrderContext';
-import { CartItem } from '../../context/CartContext';
-import './Payment.css';
+import React, { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
+import { useCart } from "../../context/CartContext";
+import { useOrder } from "../../context/OrderContext";
+import "./Payment.css";
 
 export default function PaymentComplete() {
   const { items, clearCart } = useCart();
   const { addOrder, clearOrder, isProcessing } = useOrder();
-
+  const hasOrdered = useRef(false);
   // 컴포넌트가 마운트될 때 한 번만 주문을 추가
   useEffect(() => {
-    if (items && items.length > 0 && !isProcessing) {
+    console.log("PaymentComplete useEffect 실행", items);
+    if (!hasOrdered.current && items && items.length > 0 && !isProcessing) {
       addOrder(items);
       clearCart();
+      hasOrdered.current = true;
     }
-  }, [items, addOrder, clearCart, isProcessing]);
+  }, []);
 
   // 페이지 이동 시 주문 상태 초기화
   const handleNavigate = () => {
@@ -34,5 +35,4 @@ export default function PaymentComplete() {
       </div>
     </div>
   );
-
-} 
+}

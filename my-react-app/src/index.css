@@ -5,6 +5,16 @@
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: "playfair";
+  src: url("/fonts/playfair.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "marcellus";
+  src: url("/fonts/marcellus.ttf") format("truetype");
+}
+
 body {
   font-family: system-ui, -apple-system, sans-serif;
   line-height: 1.5;
@@ -43,6 +53,7 @@ body {
 }
 
 .header-logo {
+  font-family: "playfair";
   font-size: 1.5rem;
   font-weight: bold;
   color: #27272a;
@@ -157,7 +168,7 @@ body {
   left: 50%;
   width: 30%;
   height: 100%;
-  background:linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+  background: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
   z-index: 3;
 }
 
@@ -502,7 +513,8 @@ body {
   width: 100%;
 }
 
-.kakao-button, .naver-button {
+.kakao-button,
+.naver-button {
   width: 80%;
   max-width: 400px;
   margin: 0 auto;
@@ -534,7 +546,6 @@ body {
   background-color: #15803d;
 }
 
-
 /* Footer styles */
 .footer {
   display: flex;
@@ -557,12 +568,12 @@ body {
     font-size: 1.5rem;
   }
 
-  .header-close-button{
-  position: fixed;
-  display: block;
-  z-index: 1000;
-  font-size: 1.5rem;
-  padding: 0.5rem;
+  .header-close-button {
+    position: fixed;
+    display: block;
+    z-index: 1000;
+    font-size: 1.5rem;
+    padding: 0.5rem;
   }
 
   .header-hamburger-button {
@@ -619,7 +630,7 @@ body {
     height: 500px;
   }
 
-  .hero-content{
+  .hero-content {
     margin-left: 1rem;
   }
   .hero-title {
@@ -639,7 +650,6 @@ body {
   .hero-section {
     align-items: start;
   }
-
 
   .hero-video {
     position: absolute;
@@ -668,7 +678,7 @@ body {
     left: 0;
   }
 
-  .hero-button{
+  .hero-button {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -734,7 +744,7 @@ body {
   .hero-video {
     bottom: -30%;
   }
-  
+
   .hero-content {
     margin-left: 1rem;
   }
@@ -759,12 +769,6 @@ body {
 
   .product-section {
     padding: 4rem 1em;
-  }
-
-  .product-section-title {
-    font-size: 1.875rem;
-    margin-bottom: 2rem;
-    margin-left: 1em;
   }
 
   .product-grid {

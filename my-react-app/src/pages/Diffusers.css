@@ -14,7 +14,7 @@ h1 {
 
 .diffusers-grid {
   margin: 4rem auto;
-  width: 95%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -41,7 +41,7 @@ h1 {
 
 /* 디퓨저와 캔들 구분선 */
 .diffusers-grid::after {
-  content: '캔들';
+  content: "캔들";
   grid-column: 1 / -1;
   text-align: center;
   font-size: 1.5rem;
@@ -52,13 +52,16 @@ h1 {
 @media (max-width: 768px) {
   .diffusers-page {
     margin: 0 auto;
-    width: auto;
   }
-  
+
+  .diffusers-grid {
+    width: 90%;
+  }
+
   .category-grid {
     grid-template-columns: repeat(1, 1fr);
   }
-  
+
   .diffusers-grid::after {
     display: none;
   }
@@ -67,9 +70,12 @@ h1 {
 @media (max-width: 1024px) and (min-width: 769px) {
   .diffusers-page {
     margin: 0 auto;
-    width: auto;
   }
-  
+
+  .diffusers-grid {
+    width: 95%;
+  }
+
   .category-grid {
     grid-template-columns: repeat(2, 1fr);
   }

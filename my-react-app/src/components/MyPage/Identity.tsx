@@ -1,33 +1,37 @@
-import React from 'react';
-import './Identity.css';
+import React from "react";
+import "./Identity.css";
+import { useOrder } from "../../context/OrderContext";
 
 interface IdentityProps {
   username?: string;
   points?: number;
 }
 
-export function Identity({ username = '고객', points = 0 }: IdentityProps) {
+export function Identity({ username = "고객", points = 0 }: IdentityProps) {
+  const { orderHistory } = useOrder(); // 추가
+  const orderCount = orderHistory.length; // 주문/배송 건수
+
   const sections = [
     {
-      title: '포인트',
+      title: "포인트",
       value: `${points.toLocaleString()}P`,
-      icon: '💰'
+      icon: "💰",
     },
     {
-      title: '주문/배송',
-      value: '0건',
-      icon: '📦'
+      title: "주문/배송",
+      value: `${orderCount}건`,
+      icon: "📦",
     },
     {
-      title: '리뷰',
-      value: '0건',
-      icon: '✍️'
+      title: "리뷰",
+      value: "0건",
+      icon: "✍️",
     },
     {
-      title: '나의 문의',
-      value: '0건',
-      icon: '💭'
-    }
+      title: "나의 문의",
+      value: "0건",
+      icon: "💭",
+    },
   ];
 
   return (
@@ -50,4 +54,4 @@ export function Identity({ username = '고객', points = 0 }: IdentityProps) {
       </div>
     </div>
   );
-} 
+}

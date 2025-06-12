@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState } from "react";
 
 interface OrderItem {
   id: number;
@@ -22,9 +22,10 @@ export function OrderProvider({ children }: { children: React.ReactNode }) {
   const [isProcessing, setIsProcessing] = useState(false);
 
   const addOrder = (items: OrderItem[]) => {
+    console.log("addOrder 호출", items);
     if (!isProcessing) {
       setIsProcessing(true);
-      setOrderHistory(prev => [...prev, items]);
+      setOrderHistory((prev) => [...prev, items]);
       // 페이지 이동 시 주문 상태 초기화
       setTimeout(() => {
         setIsProcessing(false);
@@ -38,7 +39,9 @@ export function OrderProvider({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <OrderContext.Provider value={{ orderHistory, addOrder, clearOrder, isProcessing }}>
+    <OrderContext.Provider
+      value={{ orderHistory, addOrder, clearOrder, isProcessing }}
+    >
       {children}
     </OrderContext.Provider>
   );
@@ -47,7 +50,7 @@ export function OrderProvider({ children }: { children: React.ReactNode }) {
 export function useOrder() {
   const context = useContext(OrderContext);
   if (context === undefined) {
-    throw new Error('useOrder must be used within an OrderProvider');
+    throw new Error("useOrder must be used within an OrderProvider");
   }
   return context;
 }

@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, ReactNode } from "react";
 
 export interface CartItem {
   id: number;
@@ -22,10 +22,10 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([]);
 
   const addItem = (newItem: CartItem) => {
-    setItems(prevItems => {
-      const existingItem = prevItems.find(item => item.id === newItem.id);
+    setItems((prevItems) => {
+      const existingItem = prevItems.find((item) => item.id === newItem.id);
       if (existingItem) {
-        return prevItems.map(item =>
+        return prevItems.map((item) =>
           item.id === newItem.id
             ? { ...item, quantity: item.quantity + newItem.quantity }
             : item
@@ -36,15 +36,13 @@ export function CartProvider({ children }: { children: ReactNode }) {
   };
 
   const updateQuantity = (id: number, quantity: number) => {
-    setItems(prevItems =>
-      prevItems.map(item =>
-        item.id === id ? { ...item, quantity } : item
-      )
+    setItems((prevItems) =>
+      prevItems.map((item) => (item.id === id ? { ...item, quantity } : item))
     );
   };
 
   const removeItem = (id: number) => {
-    setItems(prevItems => prevItems.filter(item => item.id !== id));
+    setItems((prevItems) => prevItems.filter((item) => item.id !== id));
   };
 
   const clearCart = () => {
@@ -53,7 +51,9 @@ export function CartProvider({ children }: { children: ReactNode }) {
   };
 
   return (
-    <CartContext.Provider value={{ items, addItem, updateQuantity, removeItem, clearCart }}>
+    <CartContext.Provider
+      value={{ items, addItem, updateQuantity, removeItem, clearCart }}
+    >
       {children}
     </CartContext.Provider>
   );
@@ -62,7 +62,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
 export function useCart() {
   const context = useContext(CartContext);
   if (context === undefined) {
-    throw new Error('useCart must be used within a CartProvider');
+    throw new Error("useCart must be used within a CartProvider");
   }
   return context;
-} 
+}
