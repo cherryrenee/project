@@ -13,6 +13,7 @@ interface CartContextType {
   addItem: (item: CartItem) => void;
   updateQuantity: (id: number, quantity: number) => void;
   removeItem: (id: number) => void;
+  clearCart: () => void;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -46,8 +47,13 @@ export function CartProvider({ children }: { children: ReactNode }) {
     setItems(prevItems => prevItems.filter(item => item.id !== id));
   };
 
+  const clearCart = () => {
+    // 상태를 비우고, 이전 상태를 저장하지 않도록 함
+    setItems([]);
+  };
+
   return (
-    <CartContext.Provider value={{ items, addItem, updateQuantity, removeItem }}>
+    <CartContext.Provider value={{ items, addItem, updateQuantity, removeItem, clearCart }}>
       {children}
     </CartContext.Provider>
   );

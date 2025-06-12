@@ -2,24 +2,43 @@ import React, { createContext, useContext, useState } from 'react';
 
 interface OrderItem {
   id: number;
-  name: string;
+  title: string;
   price: string;
   quantity: number;
-  image: string;
+  image_url: string;
 }
 
 interface OrderContextType {
-  completedOrder: OrderItem[] | null;
-  setCompletedOrder: (items: OrderItem[] | null) => void;
+  orderHistory: OrderItem[][];
+  addOrder: (items: OrderItem[]) => void;
+  clearOrder: () => void;
+  isProcessing: boolean;
 }
 
 const OrderContext = createContext<OrderContextType | undefined>(undefined);
 
 export function OrderProvider({ children }: { children: React.ReactNode }) {
-  const [completedOrder, setCompletedOrder] = useState<OrderItem[] | null>(null);
+  const [orderHistory, setOrderHistory] = useState<OrderItem[][]>([]);
+  const [isProcessing, setIsProcessing] = useState(false);
+
+  const addOrder = (items: OrderItem[]) => {
+    if (!isProcessing) {
+      setIsProcessing(true);
+      setOrderHistory(prev => [...prev, items]);
+      // 페이지 이동 시 주문 상태 초기화
+      setTimeout(() => {
+        setIsProcessing(false);
+      }, 500);
+    }
+  };
+
+  const clearOrder = () => {
+    setIsProcessing(false);
+    setOrderHistory([]);
+  };
 
   return (
-    <OrderContext.Provider value={{ completedOrder, setCompletedOrder }}>
+    <OrderContext.Provider value={{ orderHistory, addOrder, clearOrder, isProcessing }}>
       {children}
     </OrderContext.Provider>
   );
@@ -31,4 +50,4 @@ export function useOrder() {
     throw new Error('useOrder must be used within an OrderProvider');
   }
   return context;
-} 
+}

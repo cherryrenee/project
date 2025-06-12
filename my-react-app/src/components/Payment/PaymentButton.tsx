@@ -3,13 +3,14 @@ import * as React from "react";
 import { useCart } from "../../context/CartContext";
 import { useNavigate } from "react-router-dom";
 import { useAgreement } from "../../context/AgreementContext";
-import { useOrder } from "../../context/OrderContext";
+import { useOrder } from '../../context/OrderContext';
+import { CartItem } from '../../context/CartContext';
 
 export function PaymentButton() {
   const { items } = useCart();
   const navigate = useNavigate();
   const { isAllChecked, setShowError } = useAgreement();
-  const { setCompletedOrder } = useOrder();
+  const { addOrder } = useOrder();
 
   const calculateTotal = () => {
     const subtotal = items.reduce((total, item) => {
@@ -39,12 +40,12 @@ export function PaymentButton() {
     // 결제 처리 시뮬레이션
     const orderItems = items.map(item => ({
       id: item.id,
-      name: item.title,
+      title: item.title,
       price: formatPrice(parseInt(item.price.replace(/[^0-9]/g, ''))),
       quantity: item.quantity,
-      image: item.image_url
+      image_url: item.image_url
     }));
-    setCompletedOrder(orderItems);
+    addOrder(orderItems);
     
     setTimeout(() => {
       navigate('/payment/complete');
