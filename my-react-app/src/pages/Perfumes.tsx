@@ -49,7 +49,7 @@ export default function Perfumes() {
 
   return (
     <main className="perfumes-page">
-      <h1>향수 상품</h1>
+      <h1>향수 제품</h1>
       <div className="perfumes-grid">
         {products.map((product) => (
           <ProductCard

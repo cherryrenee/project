@@ -5,6 +5,7 @@
 }
 
 .product-section-title {
+  font-family: "scoredream";
   font-size: 2rem;
   margin-bottom: 2rem;
   text-align: center;
@@ -47,29 +48,25 @@
 }
 
 .product-title {
+  font-family: "scoredream";
   font-size: 1.25rem;
   margin-bottom: 0.5rem;
 }
 
 .product-description {
+  font-family: "chosungu";
   color: #6b7280;
   margin-bottom: 1rem;
 }
 
 .product-price {
+  font-family:"scoredream";
   font-size: 1.25rem;
   font-weight: bold;
   color: #27272a;
 }
 
-@media (max-width: 768px) {
-  .product-grid {
-    grid-template-columns: repeat(1, 1fr);
-  }
-  .product-image {
-    height: 300px;
-  }
-}
+
 
 @media (max-width: 1024px) and (min-width: 768px) {
   .product-section {
@@ -100,6 +97,15 @@
 
   .product-price {
     font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .product-image {
+    height: 300px;
   }
 }
 

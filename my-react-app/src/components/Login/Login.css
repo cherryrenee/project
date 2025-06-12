@@ -1,0 +1,299 @@
+*{
+    box-sizing: border-box;
+}
+
+/* LoginPage styles */
+.login-page {
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+  background-color: white;
+}
+
+/* LoginHeader styles */
+.login-header {
+  display: flex;
+  overflow: hidden;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  width: 100%;
+  height: 5rem;
+  background-color: white;
+  cursor: pointer;
+}
+
+.login-header button {
+  margin: auto 0;
+  font-family: "chosungu";
+  font-size: 1rem;
+  color: #78716c;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+
+/* LoginForm styles */
+.login-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-form {
+  font-family: "chosungu";
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+  align-self: center;
+  align-items: center;
+  padding: 2.75rem 4rem;
+  margin-top: 4rem;
+  max-width: 100%;
+  min-width: 480px;
+  font-size: 0.875rem;
+  background-color: white;
+  border-radius: 1rem;
+  border: 1px solid #e5e5e5;
+  width: 480px;
+}
+
+.login-form h2 {
+  margin: 0;
+  align-self: flex-start;
+  font-family: "scoredream";
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #27272a;
+}
+
+.login-form-subtitle {
+  align-self: flex-start;
+  margin-top: 0.75rem;
+  font-family: "chosungu";
+  font-size: 1rem;
+  color: #71717a;
+}
+
+.login-form form {
+  width: 100%;
+}
+
+.login-options {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+  margin: 1.75rem auto 0;
+  color: #78716c;
+  width: fit-content;
+}
+
+.auto-login-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.auto-login-checkbox {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.checkbox-icon {
+  margin-right: 0.5rem;
+}
+
+.forgot-password {
+  font-family: "chosungu";
+  font-weight: bold;
+  color: #78716c;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.login-button {
+  width: 100%;
+  padding: 1rem 3rem;
+  margin-top: 1.5rem;
+  font-family: "scoredream";
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  white-space: nowrap;
+  border-radius: 0.5rem;
+  background-color: #27272a;
+  border: none;
+  cursor: pointer;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.login-button:hover {
+  background-color: #18181b;
+}
+
+.social-divider {
+  margin-top: 2rem;
+  color: #71717a;
+  white-space: nowrap;
+}
+
+.signup-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem 0 5rem 0;
+  width: 100%;
+}
+
+.signup-text {
+  color: #71717a;
+  margin: 0;
+  font-family: "chosungu";
+  font-size: clamp(0.8rem, 3vw, 0.9rem);
+}
+
+.signup-link {
+  background: none;
+  border: none;
+  color: #525252;
+  font-family: "chosungu";
+  font-weight: 600;
+  cursor: pointer;
+  font-size: clamp(0.8rem, 3vw, 0.9rem);
+  padding: 0;
+}
+
+/* InputField styles */
+.input-field {
+  margin-top: 2rem;
+}
+
+.input-field.first-field {
+  margin-top: 2.5rem;
+}
+
+.input-field label {
+  display: block;
+  align-self: flex-start;
+  font-weight: 600;
+  color: #525252;
+  margin-bottom: 0.5rem;
+}
+
+.input-field input {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  margin-top: 0.5rem;
+  font-family: "chosungu";
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #e5e5e5;
+  background-color: #fafafa;
+  color: #a3a3a3;
+}
+
+.input-field input::placeholder {
+  color: #a3a3a3;
+}
+
+.input-field input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #27272a;
+  border-color: transparent;
+}
+
+/* SocialLoginButtons styles */
+.social-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: 0.875rem;
+  font-weight: 600;
+  width: 100%;
+}
+
+.kakao-button,
+.naver-button {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  font-family: "scoredream";
+  font-weight: bold;
+}
+
+.kakao-button {
+  padding: 0.875rem 2.75rem;
+  background-color: #fbbf24;
+  border-radius: 0.5rem;
+  color: #27272a;
+  border: none;
+  cursor: pointer;
+}
+
+.naver-button {
+  padding: 0.875rem 2.75rem;
+  color: white;
+  background-color: #16a34a;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+}
+
+.kakao-button:hover {
+  background-color: #f59e0b;
+}
+
+.naver-button:hover {
+  background-color: #15803d;
+}
+
+@media (max-width: 1024px) {
+    .login-button {
+    width: 80%;
+    margin: 1.5rem auto 0;
+  }
+
+  .kakao-button,
+  .naver-button {
+    width:80%;
+  }
+}
+
+@media (max-width: 768px) {
+  .login-header {
+    padding: 1.5rem 2rem;
+    max-width: 100%;
+  }
+
+  .login-button {
+    width: 80%;
+    margin: 1.5rem auto 0;
+    padding: 1rem 1.25rem;
+  }
+
+  .input-field.first-field {
+    margin-top: 2.5rem;
+  }
+
+  .kakao-button,
+  .naver-button {
+    padding: 0.875rem 1.25rem;
+  }
+}

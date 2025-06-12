@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import "./Login.css";
+
 
 function LoginHeader() {
   return (
     <header className="login-header">
-      <h1 className='header-logo'>AROMA</h1>
+      <Link to="/" className='header-logo'>AROMA</Link>
       <Link to="/">
         <button>← 홈으로 돌아가기</button>
       </Link>

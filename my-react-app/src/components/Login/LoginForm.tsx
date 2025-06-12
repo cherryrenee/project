@@ -3,6 +3,7 @@ import React from 'react';
 import { useState } from "react";
 import InputField from "./InputField";
 import SocialLoginButtons from "./SocialLoginButtons";
+import "./Login.css";
 
 function LoginForm() {
   const [email, setEmail] = useState("");

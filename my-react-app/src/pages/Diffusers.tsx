@@ -54,7 +54,7 @@ export default function Diffusers() {
 
   return (
     <main className="diffusers-page">
-      <h1>디퓨저 & 캔들 상품</h1>
+      <h1>디퓨저 & 캔들 제품</h1>
       <div className="diffusers-grid">
         {/* 디퓨저 */}
         <h2 className="category-title">디퓨저</h2>

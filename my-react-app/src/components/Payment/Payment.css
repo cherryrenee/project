@@ -12,9 +12,10 @@
 
 .payment-title {
   align-self: center;
-  font-size: 2.25rem;
+  font-size: 2.5rem;
   font-weight: bold;
   color: #27272a;
+  font-family: "scoredream";
 }
 
 .payment-section {
@@ -31,6 +32,7 @@
   display: flex;
   align-items: start;
   gap: 1.25rem;
+  font-family: "scoredream";
 }
 
 .payment-column {
@@ -68,6 +70,7 @@
 }
 
 .payment-summary-title {
+  font-family: "scoredream";
   font-size: 1.25rem;
   font-weight: 600;
 }
@@ -110,6 +113,7 @@
   gap: 0.5rem;
   position: relative;
   margin-left: 1rem;
+  font-family: "scoredream";
 }
 
 .payment-product-name {
@@ -127,6 +131,7 @@
   align-self: stretch;
   font-size: 0.875rem;
   color: #71717a;
+  font-family: "chosungu";
 }
 
 .payment-product-price {
@@ -171,6 +176,7 @@
   font-size: 1.25rem;
   font-weight: 600;
   color: #27272a;
+  font-family: "scoredream";
 }
 
 .form-container {
@@ -188,6 +194,7 @@
   border: 1px solid #d6d3d1;
   width: 100%;
   margin-bottom: 0.625rem;
+  font-family: "chosungu";
 }
 
 .form-input:last-child {
@@ -217,6 +224,7 @@
   gap: 2.5rem;
   width: 100%;
   color: #27272a;
+  font-family: "chosungu";
 }
 
 .payment-methods-main {
@@ -252,6 +260,7 @@
   margin-top: 2rem;
   font-size: 0.875rem;
   color: #71717a;
+  font-family: "chosungu";
 }
 
 /* Radio Buttons */
@@ -283,6 +292,7 @@
   padding: 2.25rem 5rem 2.25rem 2rem;
   margin-top: 1.75rem;
   width: 100%;
+  font-family: "chosungu";
   font-size: 1rem;
   border-radius: 0.5rem;
   border: 1px solid #e5e5e7;
@@ -348,6 +358,7 @@ fieldset {
   border: none;
   cursor: pointer;
   transition: background-color 0.2s;
+  font-family: "scoredream";
 }
 
 .payment-button:hover {
@@ -489,6 +500,7 @@ fieldset {
 .payment-complete p {
   color: #666;
   margin-bottom: 2rem;
+  font-family: "chosungu";
 }
 
 .home-button {
@@ -499,6 +511,7 @@ fieldset {
   text-decoration: none;
   border-radius: 0.5rem;
   transition: background-color 0.2s;
+  font-family: "scoredream";
 }
 
 .home-button:hover {
@@ -510,4 +523,5 @@ fieldset {
   font-size: 0.875rem;
   margin-top: 0.5rem;
   margin-bottom: 0;
+  font-family: "chosungu";
 }

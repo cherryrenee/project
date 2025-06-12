@@ -51,7 +51,7 @@ export default function Products() {
 
   return (
     <main className="products-page">
-      <h1>상품 목록</h1>
+      <h1>전체 상품</h1>
       <div className="products-grid">
         {products.map((product) => (
           <ProductCard

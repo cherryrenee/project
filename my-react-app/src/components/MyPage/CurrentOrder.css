@@ -10,6 +10,7 @@
   margin-bottom: 1.5rem;
   text-align: center;
   margin-top: 3rem;
+  font-family: "scoredream";
 }
 
 .order-card {
@@ -19,6 +20,10 @@
   padding: 1.5rem;
   width: 100%;
   margin-bottom: 1.5rem;
+}
+
+.order-date{
+  font-family: "chosungu";
 }
 
 .order-items {
@@ -53,6 +58,7 @@
 
 .item-details {
   flex: 1;
+  font-family: "scoredream";
 }
 
 .item-name {
@@ -75,6 +81,7 @@
 
 .item-quantity {
   color: #666;
+  font-family: "chosungu";
 }
 
 .order-status {
@@ -87,12 +94,14 @@
 .status-label {
   color: #666;
   font-size: 0.875rem;
+  font-family: "chosungu";
 }
 
 .status-value {
-  color: #2563eb;
+  color: #9c6644;
   font-weight: 600;
   font-size: 0.875rem;
+  font-family: "scoredream";
 }
 
 @media (max-width: 768px) {
@@ -120,4 +129,5 @@
   background-color: #f8f9fa;
   border-radius: 0.5rem;
   align-items: center;
+  font-family: "chosungu";
 }

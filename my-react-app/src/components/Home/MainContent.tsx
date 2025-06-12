@@ -69,7 +69,7 @@ export function MainContent() {
       <HeroSection />
       <main className="main-content">
         <section className="featured-section">
-          <h2 className="product-section-title">추천 상품</h2>
+          <h2 className="product-section-title">MD's Pick</h2>
           <div className="featured-grid">
             {featuredProducts.map((product) => (
               <ProductCard
