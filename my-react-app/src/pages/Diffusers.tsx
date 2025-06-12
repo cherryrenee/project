@@ -85,6 +85,7 @@ export default function Diffusers() {
               price={product.price}
               imageUrl={product.image_url}
               className="diffusers-grid-item"
+              onClick={() => handleProductClick(product)}
             />
           ))}
         </div>
@@ -101,6 +102,7 @@ export default function Diffusers() {
               price={product.price}
               imageUrl={product.image_url}
               className="diffusers-grid-item"
+              onClick={() => handleProductClick(product)}
             />
           ))}
         </div>

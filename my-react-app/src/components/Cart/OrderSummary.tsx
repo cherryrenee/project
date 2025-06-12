@@ -29,36 +29,26 @@ export function OrderSummary({ items }: OrderSummaryProps) {
 
   return (
     <aside className="order-summary">
-          <h2 className="summary-title">
-            주문 요약
-          </h2>
-          <div className="summary-content">
-          <div className="summary-labels">
-          <div className="summary-label">
-            상품 금액
-          </div>
-          <div className="summary-label">
-            배송비
-          </div>
+      <h2 className="summary-title">
+        주문 요약
+      </h2>
+      <div className="summary-content">
+        <div className="summary-labels">
+          <div className="summary-label">상품 금액</div>
+          <div className="summary-label">배송비</div>
         </div>
         <div className="summary-values">
-          <div className="summary-value">
-            {formatPrice(subtotal)}
-          </div>
+          <div className="summary-value">{formatPrice(subtotal)}</div>
           <div className="summary-shipping">
             {formatPrice(shipping)}
             {shipping === 0 && <small className="free-shipping">(무료배송)</small>}
           </div>
         </div>
       </div>
-      <hr className="summary-divider" />
+      <hr className="cart-summary-divider" />
       <div className="summary-total">
-        <div className="total-label">
-          총 결제금액
-        </div>
-        <div className="total-amount">
-          {formatPrice(total)}
-        </div>
+        <div className="total-label">총 결제금액</div>
+        <div className="total-amount">{formatPrice(total)}</div>
       </div>
       <Link to="/payment" className="checkout-button">
         주문하기

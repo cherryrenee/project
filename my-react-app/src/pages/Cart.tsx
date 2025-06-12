@@ -9,21 +9,29 @@ export default function Cart() {
 
   return (
     <div className="cart-page">
-      {items.length > 0 && <h1 className="cart-title">장바구니</h1>}
-      <div className="cart-layout">
-        <div className="cart-items">
-          <CartContent
-            items={items}
-            onQuantityChange={updateQuantity}
-            onRemove={removeItem}
-          />
-        </div>
-        {items.length > 0 && (
-          <div className="cart-summary">
-            <OrderSummary items={items} />
+      {items.length > 0 ? (
+        <>
+          <h1 className="cart-title">장바구니</h1>
+          <div className="cart-layout">
+            <div className="cart-items">
+              <CartContent
+                items={items}
+                onQuantityChange={updateQuantity}
+                onRemove={removeItem}
+              />
+            </div>
+            <div className="cart-summary">
+              <OrderSummary items={items} />
+            </div>
           </div>
-        )}
-      </div>
+        </>
+      ) : (
+        <CartContent
+          items={items}
+          onQuantityChange={updateQuantity}
+          onRemove={removeItem}
+        />
+      )}
     </div>
   );
 }
