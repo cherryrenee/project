@@ -4,7 +4,7 @@ import { useCart } from "../../context/CartContext";
 import { useNavigate } from "react-router-dom";
 import { useAgreement } from "../../context/AgreementContext";
 import { useOrder } from "../../context/OrderContext";
-import { CartItem } from "../../context/CartContext";
+import supabase from '../../supabaseClient';
 
 export function PaymentButton() {
   const { items } = useCart();
@@ -25,7 +25,7 @@ export function PaymentButton() {
     return price.toLocaleString("ko-KR") + "원";
   };
 
-  const handlePayment = () => {
+  const handlePayment = async () => {
     if (!isAllChecked) {
       setShowError(true);
       // 에러 메시지가 보이도록 스크롤
@@ -34,6 +34,24 @@ export function PaymentButton() {
         agreementSection.scrollIntoView({ behavior: "smooth" });
       }
       return;
+    }
+
+
+    // 결제 버튼 클릭 이벤트 기록
+    const { data, error } = await supabase
+      .from('events')
+      .insert([
+        { 
+          // user_id: items.id,
+          event_type: 'purchase_button_click',
+          event_timestamp: new Date().toISOString()
+        }
+      ]);
+
+    if (error) {
+      console.error('Error logging purchase:', error);
+    } else {
+      console.log('Purchase logged successfully:', data);
     }
 
     setShowError(false);
