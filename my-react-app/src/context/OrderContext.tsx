@@ -8,8 +8,13 @@ interface OrderItem {
   image_url: string;
 }
 
+interface OrderRecord {
+  items: OrderItem[];
+  purchase_date: string; // 주문일자 추가
+}
+
 interface OrderContextType {
-  orderHistory: OrderItem[][];
+  orderHistory: OrderRecord[];
   addOrder: (items: OrderItem[]) => void;
   clearOrder: () => void;
   isProcessing: boolean;
@@ -18,14 +23,15 @@ interface OrderContextType {
 const OrderContext = createContext<OrderContextType | undefined>(undefined);
 
 export function OrderProvider({ children }: { children: React.ReactNode }) {
-  const [orderHistory, setOrderHistory] = useState<OrderItem[][]>([]);
+  const [orderHistory, setOrderHistory] = useState<OrderRecord[]>([]);
   const [isProcessing, setIsProcessing] = useState(false);
 
   const addOrder = (items: OrderItem[]) => {
     console.log("addOrder 호출", items);
+    const purchase_date = new Date().toISOString().split("T")[0];
     if (!isProcessing) {
       setIsProcessing(true);
-      setOrderHistory((prev) => [...prev, items]);
+      setOrderHistory((prev) => [...prev, { items, purchase_date }]);
       // 페이지 이동 시 주문 상태 초기화
       setTimeout(() => {
         setIsProcessing(false);

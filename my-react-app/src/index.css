@@ -373,7 +373,6 @@ body {
     text-decoration: none;
   }
 
-
   .footer {
     padding: 0 1.25rem;
     font-size: 0.75rem;
@@ -384,7 +383,6 @@ body {
   .cart-content {
     min-height: 600px;
   }
-
 }
 
 @media (max-width: 768px) {

@@ -26,7 +26,7 @@ export default function Products() {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { addItem } = useCart();
-  
+
   useEffect(() => {
     const fetchProducts = async () => {
       const { data, error } = await supabase.from("products").select("*");

@@ -60,13 +60,11 @@
 }
 
 .product-price {
-  font-family:"scoredream";
+  font-family: "scoredream";
   font-size: 1.25rem;
   font-weight: bold;
   color: #27272a;
 }
-
-
 
 @media (max-width: 1024px) and (min-width: 768px) {
   .product-section {
