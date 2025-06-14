@@ -53,7 +53,7 @@ src/
 - 결제 완료 시 `addOrder`로 주문 내역을 저장하고, 장바구니를 비웁니다.
 - 구매 내역 및 구매 상품 데이터를 Supabase에 저장합니다.
   - 구매 내역: product_id, quantity, purchase_date, total_price
-  - 구매 상품: id, name, price(숫자)
+  - 구매 상품: id, title, price(숫자)
 
 ### 3. `collectPurchaseData.ts`
 
@@ -77,23 +77,6 @@ src/
 
 ---
 
-## 실행 방법
-
-1. 의존성 설치
-
-   ```
-   npm install
-   ```
-
-2. 개발 서버 실행
-
-   ```
-   npm start
-   ```
-
-3. 브라우저에서 [http://localhost:3000](http://localhost:3000) 접속
-
----
 
 ## 기타
 
@@ -106,3 +89,29 @@ src/
 ## 문의
 
 이 프로젝트에 대한 문의는 이슈 또는 Pull Request로
+
+---
+
+## netlify 배포 주소
+
+https://dapper-sunshine-5cee34.netlify.app/
+
+---
+
+## 데이터 수집 항목
+
+- event: 결제버튼 누른 event, time_stamp 데이터. 구매 시간대를 분석하여 이에 맞는 시간 한정 이벤트 팝업 창을 띄우는 등의 마케팅 전략 기획 가능
+- purchases: product_id, quantity, purchase_date, total_price 데이터. 구매 데이터를 분석하여 한 번에 결제하는 금액의 평균을 계산하여 새로운 제품의 가격을 측정할 수 있는 기준을 만들거나 할인 이벤트에서 할인 금액 산정 기준이 될 수 있음
+- purchased_products: id(product_id), name, price 데이터. 가장 많이 구매된 제품을 알 수 있음. 또한 로그인 페이지를 활성화하여 user_id를 수집한다면 재구매율도 계산하여 이에 맞는 마케팅 수집이 가능함
+
+---
+
+## 데이터 수집 사진
+
+![Alt text](./public/event.PNG)
+![Alt text](./public/purchases.PNG)
+![Alt text](./public/purchased_products.jpg)
+
+
+
+
